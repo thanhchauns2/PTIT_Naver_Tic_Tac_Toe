@@ -25,3 +25,6 @@ def draw_screen():
 def new_board():
     board = [[0 for x in range(screen_size[0] // square_size)] for y in range(screen_size[1] // square_size)]
     return board
+
+def check_if_end_game(board):
+    pass

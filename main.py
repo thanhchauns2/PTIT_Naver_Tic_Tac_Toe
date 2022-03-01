@@ -31,5 +31,6 @@ while True:
             board[x][y] = 1
             pygame.display.update()
             asyncio.run_coroutine_threadsafe(computer_reply(screen, board), loop = asyncio.new_event_loop())
+            check_if_end_game(board)
             # print(x, y)
     # next_turn = True
