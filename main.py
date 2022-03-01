@@ -14,12 +14,8 @@ board = new_board()
 
 pygame.display.update()
 
-# next_turn = False
-
 while True:
     ev = pygame.event.get()
-    # if next_turn:
-    #     continue
     for event in ev:
         if event.type == pygame.QUIT:
             sys.exit()

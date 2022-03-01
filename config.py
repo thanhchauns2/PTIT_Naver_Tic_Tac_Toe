@@ -4,7 +4,7 @@ screen_size = (1000, 1000)
 screen_color = (160, 160, 160)
 
 # board config
-# 0 = ô đang trống, 1 = X, -1 = Y
+# 0 = ô đang trống, 1 = X, -1 = O
 
 border_thickness = 1
 square_size = 40
