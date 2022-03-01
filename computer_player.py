@@ -41,7 +41,7 @@ def analyze_current_move(board, next_player): # phần tôi làm
                 x = i
                 y = j
                 points = curr_point
-    pass
+    return (x, y)
 
 def deep_analyze(board): # phần mọi người làm
     # phân tích trạng thái bàn cờ
