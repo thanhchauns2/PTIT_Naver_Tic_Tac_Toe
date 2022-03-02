@@ -23,19 +23,20 @@ def analyze(board, next_player, x = 0, y = 0): # phân tích bàn cờ nếu nh�
     return points - points_negative * 1.25
     
 
-def analyze_current_move(board, next_player): # phần tôi làm
+def analyze_current_move(my_board, next_player): # phần tôi làm
     # phân tích trạng thái hiện tại của bàn cờ
     # board: mảng 2 chiều thể hiện trạng thái của bàn cờ
     # next_player: 1 nếu là X, -1 nếu là O
     # độ sâu: 1 nước
     # return: một pair (x, y) đưa ra tọa độ tốt nhất
-    board_size_x = len(board)
-    board_size_y = len(board[0])
+    board_size_x = len(my_board)
+    board_size_y = len(my_board[0])
     x = 0
     y = 0
     points = -1e10
     for i in range(board_size_x):
         for j in range(board_size_y):
+            board = my_board
             curr_point = analyze(board, next_player, i, j)
             if (points < curr_point):
                 x = i
