@@ -26,5 +26,18 @@ def new_board():
     board = [[0 for x in range(screen_size[0] // square_size)] for y in range(screen_size[1] // square_size)]
     return board
 
+def display_text(screen, text, coordinate):
+    font = pygame.font.Font(text_font, text_size)
+    screen_text = font.render(text, True, text_color)
+    textRect = screen_text.get_rect()
+    textRect.center = (coordinate[0], coordinate[1])
+    screen.blit(screen_text, textRect)
+
+def win(screen, winner = "Player"):
+    if winner == "Player":
+        display_text(screen, win_text, (screen_size[0] // 2, screen_size[1] // 2))
+    else:
+        display_text(screen, lose_text, (screen_size[0] // 2, screen_size[1] // 2))
+
 def check_if_end_game(board):
     pass

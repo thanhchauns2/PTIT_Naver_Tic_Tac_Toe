@@ -27,3 +27,11 @@ connect_three = 25
 connect_multiple_two = 20
 connect_two_has_obstacles = 1
 connect_two = 5
+
+# text config
+
+win_text = "Congratulations! You win."
+lose_text = "You Lost. Try Again?"
+text_size = 60
+text_color = (249, 248, 113)
+text_font = 'freesansbold.ttf'
