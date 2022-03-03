@@ -98,7 +98,7 @@ def four_in_a_row(board, next_player, x, y):
             points += connect_four_has_obstacles
         else:
             points += connect_four
-    if points != 0 and points != connect_four_has_obstacles and points > connect_four:
+    if points > connect_four:
         return connect_multiple_four
     elif points == connect_four:
         return connect_four
@@ -113,7 +113,7 @@ def enemy_four_in_a_row(board, next_player):
         for j in range(board_size):
             if board[i][j] == next_player:
                 points = max(points, four_in_a_row(board, next_player, i, j))
-    return -points
+    return points
 
 def three_in_a_row(board, next_player, x, y):
     (up, down, left, right) = (0, 0, 0, 0)
@@ -184,7 +184,7 @@ def enemy_three_in_a_row(board, next_player):
         for j in range(board_size):
             if board[i][j] == next_player:
                 points = max(points, three_in_a_row(board, next_player, i, j))
-    return -points
+    return points
 
 def two_in_a_row(board, next_player, x, y):
     (up, down, left, right) = (0, 0, 0, 0)
@@ -254,4 +254,4 @@ def enemy_two_in_a_row(board, next_player):
         for j in range(board_size):
             if board[i][j] == next_player:
                 points = max(points, two_in_a_row(board, next_player, i, j))
-    return -points
+    return points

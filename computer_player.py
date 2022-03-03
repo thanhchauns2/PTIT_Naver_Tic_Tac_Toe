@@ -16,13 +16,13 @@ def analyze(my_board, next_player, x = 0, y = 0): # phân tích bàn cờ nếu 
     if enemy_five_in_a_row(board, next_player):
         board[x][y] = 0
         return 1e10 # đã thắng
-    points = enemy_four_in_a_row(board, next_player) > 0 # check các trường hợp 4 quân thẳng hàng
+    points = enemy_four_in_a_row(board, next_player) # check các trường hợp 4 quân thẳng hàng
     points = max(points, enemy_three_in_a_row(board, next_player)) # check các trường hợp 3 quân thẳng hàng
     points = max(points, enemy_two_in_a_row(board, next_player)) # check các trường hợp 2 quân thẳng hàng
 
-    points_negative = enemy_four_in_a_row(board, -next_player) > 0 # check các trường hợp 4 quân địch thẳng hàng
-    points_negative = min(points_negative, enemy_three_in_a_row(board, -next_player)) # check các trường hợp 3 quân địch thẳng hàng
-    points_negative = min(points_negative, enemy_two_in_a_row(board, -next_player)) # check các trường hợp 2 quân địch thẳng hàng
+    points_negative = enemy_four_in_a_row(board, -next_player) # check các trường hợp 4 quân địch thẳng hàng
+    points_negative = max(points_negative, enemy_three_in_a_row(board, -next_player)) # check các trường hợp 3 quân địch thẳng hàng
+    points_negative = max(points_negative, enemy_two_in_a_row(board, -next_player)) # check các trường hợp 2 quân địch thẳng hàng
 
     for i in range(-1, 1):
         for j in range(-1, 1):
@@ -35,7 +35,7 @@ def analyze(my_board, next_player, x = 0, y = 0): # phân tích bàn cờ nếu 
 
     board[x][y] = 0
 
-    return points + points_negative * 1.25
+    return points - points_negative * 1.25
     
 
 def analyze_current_move(my_board, next_player): # phần tôi làm
