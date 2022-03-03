@@ -1,5 +1,6 @@
 import pygame
 from config import *
+from positions import *
 
 def drawX(screen , x = 0, y = 0):
     points = ((x * square_size + from_border, y * square_size + from_border), 
@@ -39,5 +40,13 @@ def win(screen, winner = "Player"):
     else:
         display_text(screen, lose_text, (screen_size[0] // 2, screen_size[1] // 2))
 
-def check_if_end_game(board):
-    pass
+def check_if_end_game(screen, board):
+    if enemy_five_in_a_row(board, 1):
+        win(screen, "Player")
+        # print('dasd')
+        return 1
+    elif enemy_five_in_a_row(board, -1):
+        win(screen, "Computer")
+        return 1
+    return 0
+    

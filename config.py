@@ -1,6 +1,6 @@
 # screen config
 
-screen_size = (1000, 1000)
+screen_size = (800, 800)
 screen_color = (160, 160, 160)
 
 # board config
@@ -25,7 +25,7 @@ connect_multiple_three =  500
 connect_three_has_obstacles = 10
 connect_three = 25
 connect_multiple_two = 20
-connect_two_has_obstacles = 1
+connect_two_has_obstacles = 2
 connect_two = 5
 
 # text config
