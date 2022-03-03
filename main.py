@@ -43,5 +43,4 @@ while True:
                 game_over = True
                 continue
             pygame.display.update()
-            # print(x, y)
     # next_turn = True
