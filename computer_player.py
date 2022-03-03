@@ -35,7 +35,7 @@ def analyze(my_board, next_player, x = 0, y = 0): # phân tích bàn cờ nếu 
 
     board[x][y] = 0
 
-    return points - points_negative * 1.25
+    return points + points_negative * 1.25
     
 
 def analyze_current_move(my_board, next_player): # phần tôi làm
