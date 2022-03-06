@@ -2,21 +2,37 @@ import pygame
 from positions import *
 from draw import *
 
+def coppyList(list):
+    nlist = len(list)
+    v = [[0 for i in range(nlist)] for i in range(nlist)]
+    for i in range(nlist):
+        for j in range(nlist):
+            v[i][j] = list[i][j]
+    return v
+
+
 def analyze(my_board, next_player, x, y): # phân tích bàn cờ nếu như thêm vào vị trí (x, y)
-    board = my_board[:]
-    point = 0
+    board = coppyList(my_board)
+    board[x][y] = next_player
+    if have_five(board, next_player, x , y):
+        return 1e18
+    board[x][y] = -next_player
+    if have_five(board, -next_player, x , y):
+        return 1e18
     board[x][y] = next_player
     pointAttack = 0
-    pointAttack = max(pointAttack, four_in_a_row(board, next_player, x, y))
-    pointAttack = max(pointAttack, three_in_a_row(board, next_player, x, y))
-    pointAttack = max(pointAttack, two_in_a_row(board, next_player, x, y))
+    pointAttack = max(pointAttack, four_in_a_row(board, next_player, x, y, '1'))
+    pointAttack = max(pointAttack, three_in_a_row(board, next_player, x, y, '1'))
+    pointAttack = max(pointAttack, two_in_a_row(board, next_player, x, y, '1'))
     board[x][y] = -next_player
     pointDefense = 0
-    pointDefense = max(pointDefense, four_in_a_row(board, next_player * -1, x, y))
-    pointDefense = max(pointDefense, three_in_a_row(board, next_player * -1, x, y))
-    pointDefense = max(pointDefense, two_in_a_row(board, next_player * -1, x, y))
+    pointDefense = max(pointDefense, four_in_a_row(board, next_player * -1, x, y, '2'))
+    pointDefense = max(pointDefense, three_in_a_row(board, next_player * -1, x, y, '2'))
+    pointDefense = max(pointDefense, two_in_a_row(board, next_player * -1, x, y, '2'))
     board[x][y] = 0
-    return max(pointAttack, pointDefense + 100)
+    # if pointDefense != 0 or pointAttack != 0:
+    #     print(pointDefense, ' ', pointAttack)
+    return max(pointAttack, pointDefense)
 
 def analyze_current_move(table, next_player): # phần tôi làm
     point , position_x, position_y = 0, 0, 0
@@ -29,6 +45,7 @@ def analyze_current_move(table, next_player): # phần tôi làm
                     point = cur_point
                     position_x = x
                     position_y = y
+    print(point, ' ', position_x, position_y)
     return (position_x, position_y)
 
 def deep_analyze(board): # phần mọi người làm
@@ -49,4 +66,4 @@ def computer_reply(screen, board):
     board[position[0]][position[1]] = -1
     # for i in board:
     #     print(i)
-    # pass
+    pass

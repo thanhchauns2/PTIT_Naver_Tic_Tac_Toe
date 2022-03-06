@@ -17,16 +17,27 @@ tic_tac_thickness = 6
 from_border = 9
 
 # analyze points
+connect_five1 = 1e18
+connect_multiple_four1 = 1e9 + 500
+connect_four_has_obstacles1 = 500
+connect_four1 = 1e9
+connect_multiple_three1 =  1e7
+connect_three_has_obstacles1 = 400
+connect_three1 = 5000
+connect_multiple_two1 = 300
+connect_two_has_obstacles1 = 50
+connect_two1 = 200
 
-connect_multiple_four = 1e8
-connect_four_has_obstacles = 40000
-connect_four = 1000
-connect_multiple_three =  1000
-connect_three_has_obstacles = 10
-connect_three = 50
-connect_multiple_two = 50
-connect_two_has_obstacles = 5
-connect_two = 5
+connect_five2 = 1e18
+connect_multiple_four2 = 1e8
+connect_four_has_obstacles2 = 500
+connect_four2 = 1e9
+connect_multiple_three2 =  1e6
+connect_three_has_obstacles2 = 400
+connect_three2 = 1e6
+connect_multiple_two2 = 10
+connect_two_has_obstacles2 = 2
+connect_two2 = 5
 
 # text config
 

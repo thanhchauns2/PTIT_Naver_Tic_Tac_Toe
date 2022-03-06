@@ -29,22 +29,27 @@ while True:
             y = pos[1] // 40
             drawX(screen, x, y)
             board[x][y] = 1
-
+            # for i in range(len(board)):
+            #     for j in range(len(board)):
+            #         print(board[i][j], end=" ")
+            #     print('\n')
             if check_if_end_game(screen, board):
                 pygame.display.update()
                 ev1 = pygame.event.get()
                 game_over = True
                 continue
+
             pygame.display.update()
             computer_reply(screen, board)
+            # for i in range(len(board)):
+            #     for j in range(len(board)):
+            #         print(board[i][j], end=" ")
+            #     print('\n')
             if check_if_end_game(screen, board):
                 pygame.display.update()
                 ev = pygame.event.get()
                 game_over = True
                 continue
-            # for i in range(len(board)):
-            #     for j in range(len(board)):
-            #         print(board[i][j], end=" ")
-            #     print('\n')
+
             pygame.display.update()
     # next_turn = True
