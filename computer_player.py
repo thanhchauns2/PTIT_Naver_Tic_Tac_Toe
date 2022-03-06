@@ -43,14 +43,11 @@ def analyze_current_move(table, next_player): # phần tôi làm
                     point = cur_point
                     position_x = x
                     position_y = y
-    print(point, ' ', position_x, position_y)
     return (position_x, position_y)
 
 def deep_analyze(board): # phần mọi người làm
-    # phân tích trạng thái bàn cờ
-    # board: mảng 2 chiều thể hiện trạng thái của bàn cờ
-    # độ sâu, v/v: mọi người dev thế nào thì viết như thế
-    # return: "điểm" của trạng thái bàn cờ, dương khi tỉ lệ thắng cao và âm khi tỉ lệ thắng thấp
+    board_coppy = coppyList(board)
+
     pass
 
 # screen: màn hình hiện đang chơi, board: mảng 2 chiều thể hiện trạng thái của bàn cờ
