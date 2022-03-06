@@ -19,13 +19,13 @@ from_border = 9
 # analyze points
 
 connect_multiple_four = 1e8
-connect_four_has_obstacles = 40
+connect_four_has_obstacles = 40000
 connect_four = 1000
-connect_multiple_three =  500
+connect_multiple_three =  1000
 connect_three_has_obstacles = 10
-connect_three = 25
-connect_multiple_two = 20
-connect_two_has_obstacles = 2
+connect_three = 50
+connect_multiple_two = 50
+connect_two_has_obstacles = 5
 connect_two = 5
 
 # text config
