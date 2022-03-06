@@ -30,8 +30,6 @@ def analyze(my_board, next_player, x, y): # phân tích bàn cờ nếu như th�
     pointDefense = max(pointDefense, three_in_a_row(board, next_player * -1, x, y, '2'))
     pointDefense = max(pointDefense, two_in_a_row(board, next_player * -1, x, y, '2'))
     board[x][y] = 0
-    # if pointDefense != 0 or pointAttack != 0:
-    #     print(pointDefense, ' ', pointAttack)
     return max(pointAttack, pointDefense)
 
 def analyze_current_move(table, next_player): # phần tôi làm

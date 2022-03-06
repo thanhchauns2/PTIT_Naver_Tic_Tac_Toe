@@ -1,67 +1,10 @@
 from config import *
-dict = {
-    'connect_multiple_four1' : connect_multiple_four1,
-    'connect_four_has_obstacles1' : connect_four_has_obstacles1,
-    'connect_four1' : connect_four1,
-    'connect_multiple_three1' :  connect_multiple_three1,
-    'connect_three_has_obstacles1' : connect_three_has_obstacles1,
-    'connect_three1' : connect_three1,
-    'connect_multiple_two1' : connect_multiple_two1,
-    'connect_two_has_obstacles1' : connect_two_has_obstacles1,
-    'connect_two1' : connect_two1,
-
-    'connect_multiple_four2' : connect_multiple_four2,
-    'connect_four_has_obstacles2' : connect_four_has_obstacles2,
-    'connect_four2' : connect_four2,
-    'connect_multiple_three2' :  connect_multiple_three2,
-    'connect_three_has_obstacles2' : connect_three_has_obstacles2,
-    'connect_three2' : connect_three2,
-    'connect_multiple_two2' : connect_multiple_two2,
-    'connect_two_has_obstacles2' : connect_two_has_obstacles2,
-    'connect_two2' : connect_two2
-}
-
 
 def not_valid(board, x):
     nboard = len(board)
     if x < 0 or x >= nboard:
         return True
     return False
-def five_in_a_row(board, next_player, x, y):
-    # dọc
-    for i in range(x - 2, x + 3):
-        if i < 0 or i >= len(board):
-            break
-        if board[i][y] != next_player:
-            break
-        if i == x + 2:
-            return True
-    # ngang
-    for i in range(y - 2, y + 3):
-        if i < 0 or i >= len(board):
-            break
-        if board[x][i] != next_player:
-            break
-        if i == y + 2:
-            return True
-    # chéo xuôi
-    for i in range(-2, 3):
-        if x + i < 0 or x + i >= len(board) or y + i < 0 or y + i >= len(board):
-            break
-        if board[x + i][y + i] != next_player:
-            break
-        if i == 2:
-            return True
-    # chéo ngược
-    for i in range(-2, 3):
-        if x + i < 0 or x + i >= len(board) or y - i < 0 or y - i >= len(board):
-            break
-        if board[x + i][y - i] != next_player:
-            break
-        if i == 2:
-            return True
-    return False
-
 def have_five(board, next_player, x, y):
     (up, down, left, right) = (0, 0, 0, 0)
     (up_left, down_left, up_right, down_right) = (0, 0, 0, 0)
@@ -88,8 +31,8 @@ def have_five(board, next_player, x, y):
     if down_left + up_right - 2 >= 4: return True
     if up_left + down_right - 2 >= 4: return True
     return False
-
-
+def five_in_a_row(board, next_player, x, y):
+    return have_five(board, next_player, x, y)
 
 def enemy_five_in_a_row(board, next_player):
     board_size = len(board)
