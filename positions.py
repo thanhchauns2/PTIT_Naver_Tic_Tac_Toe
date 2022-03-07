@@ -5,6 +5,14 @@ def not_valid(board, x):
         return True
     return False
 
+def coppyList(list):
+    nlist = len(list)
+    v = [[0 for i in range(nlist)] for i in range(nlist)]
+    for i in range(nlist):
+        for j in range(nlist):
+            v[i][j] = list[i][j]
+    return v
+
 def have_five(board, next_player, x, y):
     (up, down, left, right) = (0, 0, 0, 0)
     (up_left, down_left, up_right, down_right) = (0, 0, 0, 0)
@@ -118,11 +126,11 @@ def process(board: list, next_player: int, x: int, y: int, nums: str, amount: in
         else:
             points += dict[f'connect_{nums}{rank}']
     if points > dict[f'connect_{nums}{rank}']:
-        return dict[f'connect_multiple_{nums}{rank}']
+        return dict[f'connect_multiple_{nums}{rank}'] + points
     elif points == dict[f'connect_{nums}{rank}']:
-        return dict[f'connect_{nums}{rank}']
+        return dict[f'connect_{nums}{rank}'] + points
     elif points > dict[f'connect_{nums}_has_obstacles{rank}']:
-        return dict[f'connect_{nums}_has_obstacles{rank}']
+        return dict[f'connect_{nums}_has_obstacles{rank}'] + points
     return 0
 
 
@@ -136,3 +144,44 @@ def three_in_a_row(board, next_player, x, y, rank):
 
 def two_in_a_row(board, next_player, x, y, rank):
     return process(board, next_player, x, y, 'two', 2, rank)
+
+
+def enemy_four_in_a_row(board, next_player):
+    board_size = len(board)
+    points = (0, 0, 0)
+    for i in range(board_size):
+        for j in range(board_size):
+            if board[i][j] == 0:
+                newL = coppyList(board)
+                newL[i][j] = next_player
+                cur_point = four_in_a_row(newL, next_player, i, j, '2')
+                if points[0] < cur_point:
+                    points = (cur_point, i, j)
+    return points
+
+def enemy_three_in_a_row(board, next_player):
+    board_size = len(board)
+    points = (0, 0, 0)
+    for i in range(board_size):
+        for j in range(board_size):
+            if board[i][j] == 0:
+                newL = coppyList(board)
+                newL[i][j] = next_player
+                cur_point = three_in_a_row(newL, next_player, i, j, '2')
+                if points[0] < cur_point:
+                    points = (cur_point, i, j)
+    return points
+
+def enemy_two_in_a_row(board, next_player):
+    board_size = len(board)
+    points = (0, 0, 0)
+    for i in range(board_size):
+        for j in range(board_size):
+            if board[i][j] == 0:
+                newL = coppyList(board)
+                newL[i][j] = next_player
+                cur_point = two_in_a_row(newL, next_player, i, j, '2')
+                newL[i][j] = 0
+                if points[0] < (cur_point):
+                    points = (cur_point, i, j)
+    return points

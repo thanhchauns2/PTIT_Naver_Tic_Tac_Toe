@@ -2,13 +2,6 @@ import pygame
 from positions import *
 from draw import *
 import queue
-def coppyList(list):
-    nlist = len(list)
-    v = [[0 for i in range(nlist)] for i in range(nlist)]
-    for i in range(nlist):
-        for j in range(nlist):
-            v[i][j] = list[i][j]
-    return v
 
 def analyze(my_board, next_player, x, y):  # phân tích bàn cờ nếu như thêm vào vị trí (x, y)
     board = coppyList(my_board)
@@ -59,13 +52,26 @@ def deep_analyze(board):  # phần mọi người làm
         result = container[5]
         # print("dept = ", dept, ' ', x, ' ', y, ' ', result)
         # if dept >= 2 :print(dept)
-        if dept >= 2:
+        if dept >= 3:
             # print(result)
             if result > answer[0]:
                 # print(x, ' ', y)
                 answer = (result, x, y)
             continue
         nlist = len(list)
+        if dept % 2 == 1 :
+            new_l = coppyList(list)
+            answer = (0, 0, 0)
+            answer = max(answer, enemy_four_in_a_row(new_l, 1))
+            answer = max(answer, enemy_three_in_a_row(new_l, 1))
+            answer = max(answer, enemy_two_in_a_row(new_l, 1))
+            new_l[answer[1]][answer[2]] = 1
+            if dept == 0 :
+                q.put((new_l, dept + 1, -1, answer[1], answer[2], result - answer[0]))
+            else :
+                q.put((new_l, dept + 1, -1, x, y, result - answer[0]))
+            continue
+
 
         for i in range(nlist):
             for j in range(nlist):
@@ -84,10 +90,6 @@ def deep_analyze(board):  # phần mọi người làm
                         q.put((new_list, dept + 1, -nxt, i, j, new_result))
                     else :
                         q.put((new_list, dept + 1, -nxt, x, y, new_result))
-
-
-        # print(q.qsize())
-
 
     return answer
 
