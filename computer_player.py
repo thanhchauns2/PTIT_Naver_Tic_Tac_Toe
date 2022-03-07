@@ -52,7 +52,7 @@ def deep_analyze(board):  # phần mọi người làm
         result = container[5]
         # print("dept = ", dept, ' ', x, ' ', y, ' ', result)
         # if dept >= 2 :print(dept)
-        if dept >= 3:
+        if dept >= 2:
             # print(result)
             if result > answer[0]:
                 # print(x, ' ', y)
