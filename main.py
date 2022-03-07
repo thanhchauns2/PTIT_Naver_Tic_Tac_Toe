@@ -27,6 +27,8 @@ while True:
             pos = pygame.mouse.get_pos()
             x = pos[0] // 40
             y = pos[1] // 40
+            if board[x][y] != 0:
+                continue
             drawX(screen, x, y)
             board[x][y] = 1
             if check_if_end_game(screen, board):

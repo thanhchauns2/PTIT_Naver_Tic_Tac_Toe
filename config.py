@@ -58,10 +58,10 @@ dict = {
     'connect_two2' : connect_two2
 }
 
-# text confi
+# text config
 
 win_text = "Congratulations! You win."
 lose_text = "You Lost. Try Again?"
-text_size = 60
+text_size = 30
 text_color = (249, 248, 113)
 text_font = 'freesansbold.ttf'
