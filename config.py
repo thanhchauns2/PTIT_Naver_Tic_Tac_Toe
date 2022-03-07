@@ -1,6 +1,6 @@
 # screen config
 
-screen_size = (800, 800)
+screen_size = (400, 400)
 screen_color = (160, 160, 160)
 
 # board config
@@ -58,7 +58,7 @@ dict = {
     'connect_two2' : connect_two2
 }
 
-# text config
+# text confi
 
 win_text = "Congratulations! You win."
 lose_text = "You Lost. Try Again?"

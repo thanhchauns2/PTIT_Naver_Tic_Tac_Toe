@@ -43,7 +43,6 @@ def win(screen, winner = "Player"):
 def check_if_end_game(screen, board):
     if enemy_five_in_a_row(board, 1):
         win(screen, "Player")
-        # print('dasd')
         return 1
     elif enemy_five_in_a_row(board, -1):
         win(screen, "Computer")

@@ -44,4 +44,4 @@ while True:
                 continue
 
             pygame.display.update()
-    # next_turn = True
+    # next_turn = Tru
