@@ -7,10 +7,29 @@ from computer_player import *
 from draw import *
 from tkinter import *
 
+def win(screen, winner = "Player"):
+    if winner == "Player":
+        Label(root, text = username.get() + win_text2  , font=text_font).pack()
+        display_text(screen, win_text1 + username.get() + win_text2  , (screen_size[0] // 2, screen_size[1] // 2))
+    else:
+        Label(root, text = username.get() + lose_text  , font=text_font).pack()
+        display_text(screen, username.get() + lose_text , (screen_size[0] // 2, screen_size[1] // 2))
+
+def check_if_end_game(screen, board):
+    if enemy_five_in_a_row(board, 1):
+        win(screen, "Player")
+        return 1
+    elif enemy_five_in_a_row(board, -1):
+        win(screen, "Computer")
+        return 1
+    return 0
+
 def window_game():
+
     pygame.init()
 
     screen = draw_screen()
+    
 
     board = new_board()
 
@@ -49,6 +68,9 @@ def window_game():
 
                 pygame.display.update()
 
+
+
+
 root = Tk()
 root.title("Caro")
 root.geometry("400x400")
@@ -57,16 +79,11 @@ def myClick():
 	lb = Label(root, text = "Hello world!")
 	lb.grid(row = 3, column = 0)
 
-Label(root, text = 'Tên đăng nhập').grid(row = 0, column = 0)
-Label(root, text = 'Mật khẩu').grid(row = 1, column = 0)
+Label(root, text = 'User Name').pack()
 
-username = Entry(root, width = 15)
-username.grid(row = 0, column = 1)
+username =  Entry(root, font = text_font, width = 15)
+username.pack()
+username.focus()
+button = Button(root, text = "Start", command = window_game).pack()
 
-password = Entry(root, width = 15)
-password.grid(row = 1, column = 1)
-
-button = Button(root, text = "Đăng nhập", command = window_game).grid(row = 2, column = 0)
-notifi = Text(root, height = 1, width = 15)
-notifi.grid(row = 2, column = 1)
 root.mainloop()

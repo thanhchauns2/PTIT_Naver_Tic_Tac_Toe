@@ -36,7 +36,7 @@ def display_text(screen, text, coordinate):
 
 def win(screen, winner = "Player"):
     if winner == "Player":
-        display_text(screen, win_text, (screen_size[0] // 2, screen_size[1] // 2))
+        display_text(screen, win_text , (screen_size[0] // 2, screen_size[1] // 2))
     else:
         display_text(screen, lose_text, (screen_size[0] // 2, screen_size[1] // 2))
 

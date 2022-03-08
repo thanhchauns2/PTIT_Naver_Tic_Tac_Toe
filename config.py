@@ -1,5 +1,7 @@
 # screen config
 
+# from main import *
+
 screen_size = (400, 400)
 screen_color = (160, 160, 160)
 
@@ -59,9 +61,11 @@ dict = {
 }
 
 # text config
-
-win_text = "Congratulations! You win."
-lose_text = "You Lost. Try Again?"
+win_text1 = "Congratulations! "
+win_text2 = " win."
+lose_text = " lost."
+# win_text = "Congratulations! You win."
+# lose_text = "You lost. Try Again?"
 text_size = 30
 text_color = (249, 248, 113)
 text_font = 'freesansbold.ttf'
