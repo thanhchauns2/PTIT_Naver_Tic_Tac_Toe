@@ -37,7 +37,6 @@ def analyze_current_move(table, next_player):  # phần tôi làm
                     position_y = y
     return (point, position_x, position_y)
 
-
 def deep_analyze(board):  # phần mọi người làm
     q = queue.Queue()
     table = coppyList(board)
