@@ -91,12 +91,6 @@ username =  Entry(root, font = text_font, width = 15, background= 'white')
 username.pack()
 username.focus()
 
-# print(username.focus().get())
-# button = Button(root, text = "Start", command = root.destroy).pack()
-
-# root.mainloop()
-# window_game()
-
 button = Button(root, text = "Start", command = window_game).pack()
 
 root.mainloop()
