@@ -1,19 +1,21 @@
+from unicodedata import name
 import pygame
-import sys
-import asyncio
-import time
+
 from config import *
 from computer_player import *
 from draw import *
 from tkinter import *
 
+name = ''
 def win(screen, winner = "Player"):
+    
     if winner == "Player":
-        Label(root, text = username.get() + win_text2  , font=text_font).pack()
-        display_text(screen, win_text1 + username.get() + win_text2  , (screen_size[0] // 2, screen_size[1] // 2))
+        # Label(root, text = name + win_text2  , font=text_font).pack()
+        display_text(screen, win_text1 + name + win_text2  , (screen_size[0] // 2, screen_size[1] // 2))
     else:
-        Label(root, text = username.get() + lose_text  , font=text_font).pack()
-        display_text(screen, username.get() + lose_text , (screen_size[0] // 2, screen_size[1] // 2))
+        # Label(root, text = name + lose_text  , font=text_font).pack()
+        display_text(screen, name + lose_text , (screen_size[0] // 2, screen_size[1] // 2))
+    
 
 def check_if_end_game(screen, board):
     if enemy_five_in_a_row(board, 1):
@@ -25,7 +27,10 @@ def check_if_end_game(screen, board):
     return 0
 
 def window_game():
-
+    global name
+    name = username.get()
+    root.destroy()
+    
     pygame.init()
 
     screen = draw_screen()
@@ -67,13 +72,14 @@ def window_game():
                     continue
 
                 pygame.display.update()
-
+                
 
 
 
 root = Tk()
 root.title("Caro")
 root.geometry("400x400")
+root.config(background= '#8ec8ed')
 
 def myClick():
 	lb = Label(root, text = "Hello world!")
@@ -81,9 +87,16 @@ def myClick():
 
 Label(root, text = 'User Name').pack()
 
-username =  Entry(root, font = text_font, width = 15)
+username =  Entry(root, font = text_font, width = 15, background= 'white')
 username.pack()
 username.focus()
+
+# print(username.focus().get())
+# button = Button(root, text = "Start", command = root.destroy).pack()
+
+# root.mainloop()
+# window_game()
+
 button = Button(root, text = "Start", command = window_game).pack()
 
 root.mainloop()
